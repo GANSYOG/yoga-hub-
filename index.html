@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Hub - World's Premier Wellness Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-lotus" style="color: var(--color-primary); font-size: 24px; margin-right: 8px;"></i>
+                    <span>Yoga Hub</span>
+                </div>
+                
+                <nav class="main-nav" id="mainNav">
+                    <a href="#/" class="nav-link">Home</a>
+                    <a href="#/yoga" class="nav-link">Yoga</a>
+                    <a href="#/zumba" class="nav-link">Zumba</a>
+                    <a href="#/karate" class="nav-link">Karate</a>
+                    <a href="#/learn" class="nav-link">Learn</a>
+                    <a href="#/store" class="nav-link">Store</a>
+                    <a href="#/community" class="nav-link">Community</a>
+                    <a href="#/ai-tools" class="nav-link">AI Tools</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    
+                    <div class="user-menu" id="userMenu">
+                        <button class="btn btn--primary" onclick="showLoginModal()">Login</button>
+                        <button class="btn btn--outline" onclick="showRegisterModal()">Sign Up</button>
+                    </div>
+                    
+                    <div class="user-profile hidden" id="userProfile">
+                        <div class="profile-dropdown">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c64a6877?w=40" alt="Profile" class="profile-avatar">
+                            <span class="profile-name" id="profileName">Sarah</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-menu hidden" id="profileDropdown">
+                            <a href="#/journey" class="dropdown-item">Dashboard</a>
+                            <a href="#/profile" class="dropdown-item">Profile</a>
+                            <a href="#/settings" class="dropdown-item">Settings</a>
+                            <button class="dropdown-item" onclick="logout()">Logout</button>
+                        </div>
+                    </div>
+
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        
+        <!-- Landing Page -->
+        <div class="page" id="home">
+            <section class="hero">
+                <div class="hero-background">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Transform Your Wellness Journey</h1>
+                        <p class="hero-subtitle">Connect with world-class instructors, join live classes, and discover your path to mind-body harmony</p>
+                        
+                        <div class="hero-search">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search instructors, classes, or products..." id="heroSearch">
+                                <button class="btn btn--primary">Search</button>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">10K+</span>
+                                <span class="stat-label">Active Students</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Expert Instructors</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1M+</span>
+                                <span class="stat-label">Classes Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="how-it-works">
+                <div class="container">
+                    <h2 class="section-title">How Yoga Hub Works</h2>
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3>1. Create Your Profile</h3>
+                            <p>Sign up and tell us about your wellness goals and preferences</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>2. Find Your Perfect Match</h3>
+                            <p>Browse instructors, classes, and programs tailored to your needs</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3>3. Book & Practice</h3>
+                            <p>Schedule sessions and join live or recorded classes anytime</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>4. Track Your Progress</h3>
+                            <p>Monitor your journey with detailed analytics and achievements</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Instructors -->
+            <section class="featured-instructors">
+                <div class="container">
+                    <h2 class="section-title">Meet Our Top Instructors</h2>
+                    
+                    <div class="instructor-categories">
+                        <div class="category-section">
+                            <h3 class="category-title">
+                                <i class="fas fa-lotus"></i>
+                                Top Yoga Instructors
+                            </h3>
+                            <div class="instructor-grid" id="featuredYogaInstructors">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+                        
+                        <div class="category-section">
+                            <h3 class="category-title">
+                                <i class="fas fa-music"></i>
+                                Top Zumba Instructors
+                            </h3>
+                            <div class="instructor-grid" id="featuredZumbaInstructors">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+                        
+                        <div class="category-section">
+                            <h3 class="category-title">
+                                <i class="fas fa-fist-raised"></i>
+                                Top Karate Instructors
+                            </h3>
+                            <div class="instructor-grid" id="featuredKarateInstructors">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Retreats -->
+            <section class="featured-retreats">
+                <div class="container">
+                    <h2 class="section-title">Featured Wellness Retreats</h2>
+                    <div class="retreat-grid">
+                        <div class="retreat-card">
+                            <div class="retreat-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400')"></div>
+                            <div class="retreat-content">
+                                <h3>Himalayan Yoga Retreat</h3>
+                                <p>7-day transformative journey in the mountains</p>
+                                <div class="retreat-price">From $899</div>
+                                <button class="btn btn--primary">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="retreat-card">
+                            <div class="retreat-image" style="background-image: url('https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=400')"></div>
+                            <div class="retreat-content">
+                                <h3>Beachside Wellness Escape</h3>
+                                <p>5-day meditation and yoga by the ocean</p>
+                                <div class="retreat-price">From $699</div>
+                                <button class="btn btn--primary">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Yoga Page -->
+        <div class="page hidden" id="yoga">
+            <section class="discipline-hero">
+                <div class="discipline-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200')"></div>
+                <div class="discipline-hero-overlay"></div>
+                <div class="container">
+                    <div class="discipline-hero-content">
+                        <h1>Discover the Art of Yoga</h1>
+                        <p>Find inner peace and strength through ancient practices adapted for modern life</p>
+                        <div class="discipline-actions">
+                            <button class="btn btn--primary" onclick="navigateTo('instructors')">Find Instructors</button>
+                            <button class="btn btn--outline" onclick="navigateTo('live-classes')">Join Live Classes</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="discipline-features">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-robot"></i>
+                            <h3>AI Pose Trainer</h3>
+                            <p>Get real-time feedback on your yoga poses with our AI-powered trainer</p>
+                            <button class="btn btn--outline" onclick="navigateTo('ai-tools/pose-trainer')">Try Now</button>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Personalized Plans</h3>
+                            <p>AI-generated yoga programs tailored to your goals and schedule</p>
+                            <button class="btn btn--outline" onclick="navigateTo('ai-tools/plan-generator')">Create Plan</button>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Yoga Challenges</h3>
+                            <p>Join community challenges and track your progress</p>
+                            <button class="btn btn--outline" onclick="navigateTo('community')">Join Challenge</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Store Page -->
+        <div class="page hidden" id="store">
+            <section class="page-header">
+                <div class="container">
+                    <h1>Wellness Store</h1>
+                    <p>Premium yoga equipment and wellness products</p>
+                </div>
+            </section>
+
+            <section class="store-content">
+                <div class="container">
+                    <div class="store-layout">
+                        <aside class="store-sidebar">
+                            <h3>Filters</h3>
+                            <div class="filter-group">
+                                <h4>Category</h4>
+                                <label><input type="checkbox" value="equipment"> Equipment</label>
+                                <label><input type="checkbox" value="accessories"> Accessories</label>
+                                <label><input type="checkbox" value="apparel"> Apparel</label>
+                                <label><input type="checkbox" value="books"> Books</label>
+                            </div>
+                            <div class="filter-group">
+                                <h4>Price Range</h4>
+                                <div class="price-range">
+                                    <input type="range" min="0" max="200" value="100" id="priceRange">
+                                    <div class="price-labels">
+                                        <span>$0</span>
+                                        <span>$200+</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <h4>Rating</h4>
+                                <label><input type="checkbox" value="5"> 5 Stars</label>
+                                <label><input type="checkbox" value="4"> 4+ Stars</label>
+                                <label><input type="checkbox" value="3"> 3+ Stars</label>
+                            </div>
+                        </aside>
+
+                        <div class="store-main">
+                            <div class="store-tabs">
+                                <button class="tab-btn active" data-tab="products">Products</button>
+                                <button class="tab-btn" data-tab="bundles">Bundles</button>
+                            </div>
+
+                            <div class="store-controls">
+                                <div class="search-box">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" placeholder="Search products..." id="productSearch">
+                                </div>
+                                <select class="form-control" id="sortProducts">
+                                    <option value="name">Sort by Name</option>
+                                    <option value="price">Sort by Price</option>
+                                    <option value="rating">Sort by Rating</option>
+                                </select>
+                            </div>
+
+                            <div class="products-grid" id="productsGrid">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- AI Tools Hub -->
+        <div class="page hidden" id="ai-tools">
+            <section class="page-header">
+                <div class="container">
+                    <h1>AI-Powered Wellness Tools</h1>
+                    <p>Enhance your practice with cutting-edge artificial intelligence</p>
+                </div>
+            </section>
+
+            <section class="ai-tools-content">
+                <div class="container">
+                    <div class="tools-categories">
+                        <div class="category-section">
+                            <h3 class="category-title">
+                                <i class="fas fa-graduation-cap"></i>
+                                For Students
+                            </h3>
+                            <div class="tools-grid">
+                                <div class="tool-card" onclick="navigateTo('ai-tools/pose-trainer')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <h4>AI Pose Trainer</h4>
+                                    <p>Real-time pose correction using computer vision</p>
+                                </div>
+                                <div class="tool-card" onclick="navigateTo('ai-tools/coach')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <h4>AI Coach</h4>
+                                    <p>Personalized coaching conversations</p>
+                                </div>
+                                <div class="tool-card" onclick="navigateTo('ai-tools/plan-generator')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-calendar-plus"></i>
+                                    </div>
+                                    <h4>Plan Generator</h4>
+                                    <p>Custom weekly practice plans</p>
+                                </div>
+                                <div class="tool-card" onclick="navigateTo('ai-tools/nutritionist')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-apple-alt"></i>
+                                    </div>
+                                    <h4>AI Nutritionist</h4>
+                                    <p>Personalized meal planning</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-section">
+                            <h3 class="category-title">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                For Instructors
+                            </h3>
+                            <div class="tools-grid">
+                                <div class="tool-card" onclick="navigateTo('ai-tools/content')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <h4>Content Generator</h4>
+                                    <p>Create curriculum and class content</p>
+                                </div>
+                                <div class="tool-card" onclick="navigateTo('ai-tools/social-post')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-share-alt"></i>
+                                    </div>
+                                    <h4>Social Post Creator</h4>
+                                    <p>Generate engaging social media content</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-section">
+                            <h3 class="category-title">
+                                <i class="fas fa-store"></i>
+                                For Sellers
+                            </h3>
+                            <div class="tools-grid">
+                                <div class="tool-card" onclick="navigateTo('ai-tools/product-description')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                    <h4>Product Description</h4>
+                                    <p>Generate compelling product descriptions</p>
+                                </div>
+                                <div class="tool-card" onclick="navigateTo('ai-tools/review-responder')">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-reply"></i>
+                                    </div>
+                                    <h4>Review Responder</h4>
+                                    <p>Professional review responses</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- AI Pose Trainer -->
+        <div class="page hidden" id="ai-tools-pose-trainer">
+            <section class="page-header">
+                <div class="container">
+                    <h1>AI Pose Trainer</h1>
+                    <p>Get real-time feedback on your yoga poses</p>
+                </div>
+            </section>
+
+            <section class="pose-trainer-content">
+                <div class="container">
+                    <div class="trainer-layout">
+                        <div class="video-section">
+                            <div class="video-container">
+                                <video id="userVideo" autoplay muted></video>
+                                <canvas id="poseCanvas"></canvas>
+                            </div>
+                            <div class="camera-controls">
+                                <button class="btn btn--primary" id="startCamera">Start Camera</button>
+                                <button class="btn btn--outline" id="stopCamera">Stop Camera</button>
+                            </div>
+                        </div>
+                        <div class="reference-section">
+                            <h3>Reference Pose: Downward Facing Dog</h3>
+                            <div class="reference-image">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300" alt="Downward Dog">
+                            </div>
+                            <div class="pose-instructions">
+                                <h4>Instructions:</h4>
+                                <ul>
+                                    <li>Start on hands and knees</li>
+                                    <li>Tuck toes under</li>
+                                    <li>Lift hips up and back</li>
+                                    <li>Straighten legs as much as comfortable</li>
+                                    <li>Press hands firmly into mat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feedback-section">
+                        <h3>AI Feedback</h3>
+                        <div class="feedback-content" id="poseFeedback">
+                            <p>Position yourself in front of the camera and start to begin pose analysis...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Student Dashboard -->
+        <div class="page hidden" id="journey">
+            <section class="dashboard-header">
+                <div class="container">
+                    <div class="dashboard-welcome">
+                        <h1>Welcome back, <span id="dashboardUserName">Sarah</span>!</h1>
+                        <p>Your wellness journey continues</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-content">
+                <div class="container">
+                    <div class="dashboard-grid">
+                        <div class="stats-section">
+                            <div class="stats-cards">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>1,250</h3>
+                                        <p>Total Minutes</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>7</h3>
+                                        <p>Current Streak</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>45</h3>
+                                        <p>Classes Completed</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>Intermediate</h3>
+                                        <p>Current Level</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievements-section">
+                            <h3>Recent Achievements</h3>
+                            <div class="achievements-grid">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-medal" style="color: gold;"></i>
+                                    <span>7-Day Streak</span>
+                                </div>
+                                <div class="achievement-badge">
+                                    <i class="fas fa-star" style="color: orange;"></i>
+                                    <span>First Class</span>
+                                </div>
+                                <div class="achievement-badge">
+                                    <i class="fas fa-heart" style="color: red;"></i>
+                                    <span>Self-Care Champion</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions">
+                            <h3>Quick Actions</h3>
+                            <div class="action-buttons">
+                                <button class="btn btn--primary" onclick="navigateTo('live-classes')">
+                                    <i class="fas fa-play"></i>
+                                    Join Live Class
+                                </button>
+                                <button class="btn btn--outline" onclick="navigateTo('ai-tools/coach')">
+                                    <i class="fas fa-robot"></i>
+                                    AI Coach
+                                </button>
+                                <button class="btn btn--outline" onclick="navigateTo('community')">
+                                    <i class="fas fa-users"></i>
+                                    Join Challenge
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Other pages will be added dynamically based on navigation -->
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar hidden" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content" id="cartContent">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <button class="btn btn--primary" onclick="navigateTo('store')">Browse Products</button>
+            </div>
+        </div>
+        <div class="cart-footer hidden" id="cartFooter">
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0</span></strong>
+            </div>
+            <button class="btn btn--primary btn--full-width" onclick="navigateTo('checkout')">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal hidden" id="loginModal">
+        <div class="modal-overlay" onclick="hideLoginModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome Back</h3>
+                <button class="modal-close" onclick="hideLoginModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                </form>
+                <p class="modal-footer-text">
+                    Don't have an account? 
+                    <a href="#" onclick="showRegisterModal(); hideLoginModal();">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal hidden" id="registerModal">
+        <div class="modal-overlay" onclick="hideRegisterModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join Yoga Hub</h3>
+                <button class="modal-close" onclick="hideRegisterModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">User Type</label>
+                        <select class="form-control" id="registerUserType" required>
+                            <option value="student">Student</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                </form>
+                <p class="modal-footer-text">
+                    Already have an account? 
+                    <a href="#" onclick="showLoginModal(); hideRegisterModal();">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-lotus"></i>
+                        <span>Yoga Hub</span>
+                    </div>
+                    <p>Your premier destination for wellness and mindful living.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Disciplines</h4>
+                    <ul class="footer-links">
+                        <li><a href="#/yoga">Yoga</a></li>
+                        <li><a href="#/zumba">Zumba</a></li>
+                        <li><a href="#/karate">Karate</a></li>
+                        <li><a href="#/meditation">Meditation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="#/live-classes">Live Classes</a></li>
+                        <li><a href="#/ai-tools">AI Tools</a></li>
+                        <li><a href="#/community">Community</a></li>
+                        <li><a href="#/store">Store</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#/help">Help Center</a></li>
+                        <li><a href="#/contact">Contact Us</a></li>
+                        <li><a href="#/privacy">Privacy Policy</a></li>
+                        <li><a href="#/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Yoga Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
